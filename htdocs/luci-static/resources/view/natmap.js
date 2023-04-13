@@ -142,12 +142,12 @@ return view.extend({
 		o.modalonly = true;
 		o.depends('mode', 'transmission');
 
-		o = s.option(form.Value, 'tr_ipv6_address', _('qBittorrent IPv6 Address'));
-		o.datatype = 'string';
+		o = s.option(form.Flag, 'tr_allow_ipv6', _('Transmission Allow IPv6'));
 		o.modalonly = true;
-		o.depends('tr_allow_ipv6', '1');
+		o.default = true;
+		o.depends('mode', 'transmission');
 
-		o = s.option(form.Value, 'tr_allow_ipv6', _('Transmission Allow IPv6'));
+		o = s.option(form.Value, 'tr_ipv6_address', _('Transmission IPv6 Address'));
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('tr_allow_ipv6', '1');
