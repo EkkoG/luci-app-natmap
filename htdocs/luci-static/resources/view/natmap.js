@@ -67,6 +67,10 @@ return view.extend({
 		o.value('qbittorrent', _('qBittorrent'));
 		o.value('transmission', _('Transmission'));
 
+		o = s.option(form.Value, 'nat_name', _('Name'));
+		o.datatype = 'string';
+		o.modalonly = true;
+
 		o = s.option(form.Value, 'emby_url', _('Emby URL'));
 		o.datatype = 'string';
 		o.modalonly = true;
@@ -119,8 +123,9 @@ return view.extend({
 		o.depends('mode', 'qbittorrent');
 
 		o = s.option(form.Flag, 'qb_allow_ipv6', _('qBittorrent Allow IPv6'));
-		o.default = true;
+		o.default = false;
 		o.modalonly = true;
+		o.depends('mode', 'qbittorrent');
 
 		o = s.option(form.Value, 'qb_ipv6_address', _('qBittorrent IPv6 Address'));
 		o.datatype = 'string';
@@ -144,7 +149,7 @@ return view.extend({
 
 		o = s.option(form.Flag, 'tr_allow_ipv6', _('Transmission Allow IPv6'));
 		o.modalonly = true;
-		o.default = true;
+		o.default = false;
 		o.depends('mode', 'transmission');
 
 		o = s.option(form.Value, 'tr_ipv6_address', _('Transmission IPv6 Address'));

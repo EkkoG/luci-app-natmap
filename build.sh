@@ -9,5 +9,4 @@ ls ./feeds/luci/applications/luci-app-natmap
 make defconfig
 ./scripts/feeds install -a
 
-ls package
 make package/luci-app-natmap/compile V=s
