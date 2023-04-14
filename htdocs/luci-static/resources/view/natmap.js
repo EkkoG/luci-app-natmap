@@ -81,6 +81,16 @@ return view.extend({
 		o.modalonly = true;
 		o.depends('mode', 'emby');
 
+		o = s.option(form.Flag, 'emby_use_https', _('Update HTTPS Port'), _('Set to False if you want to use HTTP'));
+		o.default = false;
+		o.modalonly = true;
+		o.depends('mode', 'emby');
+
+		o = s.option(form.Flag, 'emby_update_host_with_ip', _('Update host with IP'));
+		o.default = false;
+		o.modalonly = true;
+		o.depends('mode', 'emby');
+
 		o = s.option(form.Flag, 'im_notify_enable', _('Notify'));
 		o.default = false;
 		o.modalonly = true;
