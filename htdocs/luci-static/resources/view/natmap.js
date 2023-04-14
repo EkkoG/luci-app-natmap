@@ -92,7 +92,7 @@ return view.extend({
 		o.value('pushplus', _('PushPlus'));
 		o.depends('im_notify_enable', '1');
 
-		o = s.option(form.Value, 'im_notify_channel_telegram_bot_user_id', _('Telegram Bot User ID'));
+		o = s.option(form.Value, 'im_notify_channel_telegram_bot_chat_id', _('Telegram Bot Chat ID'));
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('im_notify_channel', 'telegram_bot');
