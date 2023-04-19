@@ -9,6 +9,12 @@ OpenWrt 19.07 及以上
 curl -fsSL https://github.com/ekkog/openwrt-dist/raw/master/add-feed.sh | sh 
 ```
 
+当前环境访问 GitHub 有问题时，可以使用 GitHub 镜像
+
+```
+curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/EkkoG/openwrt-dist/master/add-feed.sh | sh
+```
+
 更新软件源并安装
 
 ```
