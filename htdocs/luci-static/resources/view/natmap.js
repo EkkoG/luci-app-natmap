@@ -66,10 +66,31 @@ return view.extend({
 		o.value('emby', _('Emby'));
 		o.value('qbittorrent', _('qBittorrent'));
 		o.value('transmission', _('Transmission'));
+		o.value('cloudflare_origin_rule', _('Cloudflare Origin Rule'));
 
 		o = s.option(form.Value, 'nat_name', _('Name'));
 		o.datatype = 'string';
 		o.modalonly = true;
+
+		o = s.option(form.Value, 'cloudflare_email', _('Cloudflare Email'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
+
+		o = s.option(form.Value, 'cloudflare_api_key', _('Cloudflare API Key'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
+
+		o = s.option(form.Value, 'cloudflare_zone_id', _('Cloudflare Zone ID'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
+
+		o = s.option(form.Value, 'cloudflare_rule_name', _('Cloudflare Rule Name'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
 
 		o = s.option(form.Value, 'emby_url', _('Emby URL'));
 		o.datatype = 'string';
