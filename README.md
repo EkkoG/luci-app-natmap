@@ -3,30 +3,19 @@
 OpenWrt 19.07 及以上
 ### 使用
 
-```
-echo "src/gz ekkog https://github.com/ekkog/openwrt-dist/raw/packages/${architecture}/${openwrt_release}" >> /etc/opkg/customfeeds.conf
-wget https://github.com/ekkog/openwrt-dist/raw/master/cd5844109a8e9dda
-opkg-key add cd5844109a8e9dda
-```
-
-
-openwrt_release 可以是 22.03 或者 21.02, 其他旧版本用 21.02 即可
-
-如果你的路由器是 x86_64 的，那么 architecture 就是 x86_64, 那么你的 opkg.conf 应该是这样的
+添加软件源
 
 ```
-echo "src/gz ekkog https://github.com/ekkog/openwrt-dist/raw/packages/x86_64/22.03" >> /etc/opkg/customfeeds.conf
-wget https://github.com/ekkog/openwrt-dist/raw/master/cd5844109a8e9dda
-opkg-key add cd5844109a8e9dda
+curl -fsSL https://github.com/ekkog/openwrt-dist/raw/master/add-feed.sh | sh 
 ```
 
-如果你不知道自己的路由器是什么架构，可以用下面命令查看
+当前环境访问 GitHub 有问题时，可以使用 GitHub 镜像
 
 ```
-cat /etc/openwrt_release | grep DISTRIB_ARCH | awk -F "'" '{print $2}'
+curl -fsSL https://ghproxy.com/https://github.com/EkkoG/openwrt-dist/blob/master/add-feed.sh | sh
 ```
 
-添加好 feed 之后，就可以用 opkg 安装了
+更新软件源并安装
 
 ```
 opkg update
