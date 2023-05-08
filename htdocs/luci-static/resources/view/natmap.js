@@ -59,134 +59,9 @@ return view.extend({
 			if (s) return s.name;
 		};
 
-		o = s.option(form.ListValue, 'mode', _('Mode'));
-		o.default = 'general';
-		o.modalonly = true;
-		o.value('general', _('General'));
-		o.value('emby', _('Emby'));
-		o.value('qbittorrent', _('qBittorrent'));
-		o.value('transmission', _('Transmission'));
-		o.value('cloudflare_origin_rule', _('Cloudflare Origin Rule'));
-
 		o = s.option(form.Value, 'nat_name', _('Name'));
 		o.datatype = 'string';
 		o.modalonly = true;
-
-		o = s.option(form.Value, 'cloudflare_email', _('Cloudflare Email'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'cloudflare_origin_rule');
-
-		o = s.option(form.Value, 'cloudflare_api_key', _('Cloudflare API Key'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'cloudflare_origin_rule');
-
-		o = s.option(form.Value, 'cloudflare_zone_id', _('Cloudflare Zone ID'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'cloudflare_origin_rule');
-
-		o = s.option(form.Value, 'cloudflare_rule_name', _('Cloudflare Rule Name'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'cloudflare_origin_rule');
-
-		o = s.option(form.Value, 'emby_url', _('Emby URL'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'emby');
-
-		o = s.option(form.Value, 'emby_api_key', _('Emby API Key'));
-		o.datatype = 'host';
-		o.modalonly = true;
-		o.depends('mode', 'emby');
-
-		o = s.option(form.Flag, 'emby_use_https', _('Update HTTPS Port'), _('Set to False if you want to use HTTP'));
-		o.default = false;
-		o.modalonly = true;
-		o.depends('mode', 'emby');
-
-		o = s.option(form.Flag, 'emby_update_host_with_ip', _('Update host with IP'));
-		o.default = false;
-		o.modalonly = true;
-		o.depends('mode', 'emby');
-
-		o = s.option(form.Flag, 'im_notify_enable', _('Notify'));
-		o.default = false;
-		o.modalonly = true;
-
-		o = s.option(form.ListValue, 'im_notify_channel', _('Notify channel'));
-		o.default = 'telegram_bot';
-		o.modalonly = true;
-		o.value('telegram_bot', _('Telegram Bot'));
-		o.value('pushplus', _('PushPlus'));
-		o.depends('im_notify_enable', '1');
-
-		o = s.option(form.Value, 'im_notify_channel_telegram_bot_chat_id', _('Telegram Bot Chat ID'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('im_notify_channel', 'telegram_bot');
-
-		o = s.option(form.Value, 'im_notify_channel_telegram_bot_token', _('Telegram Bot Token'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('im_notify_channel', 'telegram_bot');
-
-		o = s.option(form.Value, 'im_notify_channel_pushplus_token', _('PushPlus Token'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('im_notify_channel', 'pushplus');
-		
-		o = s.option(form.Value, 'qb_web_ui_url', _('qBittorrent Web UI URL'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'qbittorrent');
-		
-		o = s.option(form.Value, 'qb_username', _('qBittorrent Username'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'qbittorrent');
-
-		o = s.option(form.Value, 'qb_password', _('qBittorrent Password'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'qbittorrent');
-
-		o = s.option(form.Flag, 'qb_allow_ipv6', _('qBittorrent Allow IPv6'));
-		o.default = false;
-		o.modalonly = true;
-		o.depends('mode', 'qbittorrent');
-
-		o = s.option(form.Value, 'qb_ipv6_address', _('qBittorrent IPv6 Address'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('qb_allow_ipv6', '1');
-
-		o = s.option(form.Value, 'tr_rpc_url', _('Transmission RPC URL'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'transmission');
-		
-		o = s.option(form.Value, 'tr_username', _('Transmission Username'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'transmission');
-
-		o = s.option(form.Value, 'tr_password', _('Transmission Password'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('mode', 'transmission');
-
-		o = s.option(form.Flag, 'tr_allow_ipv6', _('Transmission Allow IPv6'));
-		o.modalonly = true;
-		o.default = false;
-		o.depends('mode', 'transmission');
-
-		o = s.option(form.Value, 'tr_ipv6_address', _('Transmission IPv6 Address'));
-		o.datatype = 'string';
-		o.modalonly = true;
-		o.depends('tr_allow_ipv6', '1');
 
 		o = s.option(form.ListValue, 'udp_mode', _('Protocol'));
 		o.default = '1';
@@ -252,6 +127,140 @@ return view.extend({
 		o = s.option(form.Value, 'notify_script', _('Notify script'));
 		o.datatype = 'file';
 		o.modalonly = true;
+
+		o = s.option(form.Flag, 'im_notify_enable', _('Notify'));
+		o.default = false;
+		o.modalonly = true;
+
+		o = s.option(form.ListValue, 'im_notify_channel', _('Notify channel'));
+		o.default = 'telegram_bot';
+		o.modalonly = true;
+		o.value('telegram_bot', _('Telegram Bot'));
+		o.value('pushplus', _('PushPlus'));
+		o.depends('im_notify_enable', '1');
+
+		o = s.option(form.Value, 'im_notify_channel_telegram_bot_chat_id', _('Telegram Bot Chat ID'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('im_notify_channel', 'telegram_bot');
+
+		o = s.option(form.Value, 'im_notify_channel_telegram_bot_token', _('Telegram Bot Token'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('im_notify_channel', 'telegram_bot');
+
+		o = s.option(form.Value, 'im_notify_channel_pushplus_token', _('PushPlus Token'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('im_notify_channel', 'pushplus');
+		
+		o = s.option(form.Flag, '_link_to', _('Change another service\'s config'));
+		o.modalonly = true;
+		o.ucioption = 'mode';
+		o.load = function(section_id) {
+			return this.super('load', section_id) ? '1' : '0';
+		};
+		o.write = function(section_id, formvalue) {};
+
+		o = s.option(form.ListValue, 'mode', _('Service'));
+		o.default = 'qbittorrent';
+		o.modalonly = true;
+		o.value('emby', _('Emby'));
+		o.value('qbittorrent', _('qBittorrent'));
+		o.value('transmission', _('Transmission'));
+		o.value('cloudflare_origin_rule', _('Cloudflare Origin Rule'));
+		o.depends('_link_to', '1');
+
+		o = s.option(form.Value, 'cloudflare_email', _('Email'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
+
+		o = s.option(form.Value, 'cloudflare_api_key', _('API Key'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
+
+		o = s.option(form.Value, 'cloudflare_zone_id', _('Zone ID'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
+
+		o = s.option(form.Value, 'cloudflare_rule_name', _('Rule Name'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_origin_rule');
+
+		o = s.option(form.Value, 'emby_url', _('URL'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'emby');
+
+		o = s.option(form.Value, 'emby_api_key', _('API Key'));
+		o.datatype = 'host';
+		o.modalonly = true;
+		o.depends('mode', 'emby');
+
+		o = s.option(form.Flag, 'emby_use_https', _('Update HTTPS Port'), _('Set to False if you want to use HTTP'));
+		o.default = false;
+		o.modalonly = true;
+		o.depends('mode', 'emby');
+
+		o = s.option(form.Flag, 'emby_update_host_with_ip', _('Update host with IP'));
+		o.default = false;
+		o.modalonly = true;
+		o.depends('mode', 'emby');
+
+		o = s.option(form.Value, 'qb_web_ui_url', _('Web UI URL'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'qbittorrent');
+		
+		o = s.option(form.Value, 'qb_username', _('Username'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'qbittorrent');
+
+		o = s.option(form.Value, 'qb_password', _('Password'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'qbittorrent');
+
+		o = s.option(form.Flag, 'qb_allow_ipv6', _('Allow IPv6'));
+		o.default = false;
+		o.modalonly = true;
+		o.depends('mode', 'qbittorrent');
+
+		o = s.option(form.Value, 'qb_ipv6_address', _('IPv6 Address'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('qb_allow_ipv6', '1');
+
+		o = s.option(form.Value, 'tr_rpc_url', _('RPC URL'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'transmission');
+		
+		o = s.option(form.Value, 'tr_username', _('Username'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'transmission');
+
+		o = s.option(form.Value, 'tr_password', _('Password'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'transmission');
+
+		o = s.option(form.Flag, 'tr_allow_ipv6', _('Allow IPv6'));
+		o.modalonly = true;
+		o.default = false;
+		o.depends('mode', 'transmission');
+
+		o = s.option(form.Value, 'tr_ipv6_address', _('IPv6 Address'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('tr_allow_ipv6', '1');
+
 
 		o = s.option(form.DummyValue, '_external_ip', _('External IP'));
 		o.modalonly = false;
