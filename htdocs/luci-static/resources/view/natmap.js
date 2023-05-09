@@ -83,7 +83,7 @@ return view.extend({
 		o.value('ipv4', _('IPv4 only'));
 		o.value('ipv6', _('IPv6 only'));
 
-		o = s.taboption('general', form.Value, 'interface', _('Interface'));
+		o = s.taboption('general', widgets.NetworkSelect, 'interface', _('Interface'));
 		o.modalonly = true;
 
 		o = s.taboption('general', form.Value, 'interval', _('Keep-alive interval'));
@@ -265,7 +265,7 @@ return view.extend({
 		o.modalonly = true;
 		o.depends('tr_allow_ipv6', '1');
 
-		o = s.taboption('link', form.DummyValue, '_external_ip', _('External IP'));
+		o = s.option(form.DummyValue, '_external_ip', _('External IP'));
 		o.modalonly = false;
 		o.textvalue = function(section_id) {
 			var s = status[section_id];
