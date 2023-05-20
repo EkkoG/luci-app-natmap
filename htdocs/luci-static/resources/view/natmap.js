@@ -245,7 +245,7 @@ return view.extend({
 		o.modalonly = true;
 		o.depends('mode', 'transmission');
 		
-		o = s.option(form.Value, 'tr_username', _('Username'));
+		o = s.option('link', form.Value, 'tr_username', _('Username'));
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('mode', 'transmission');
