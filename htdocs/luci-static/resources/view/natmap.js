@@ -173,27 +173,37 @@ return view.extend({
 		o.value('qbittorrent', _('qBittorrent'));
 		o.value('transmission', _('Transmission'));
 		o.value('cloudflare_origin_rule', _('Cloudflare Origin Rule'));
+		o.value('cloudflare_redirect_rule', _('Cloudflare Redirect Rule'));
 		o.depends('_link_to', '1');
 
 		o = s.taboption('link', form.Value, 'cloudflare_email', _('Email'));
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('mode', 'cloudflare_origin_rule');
+		o.depends('mode', 'cloudflare_redirect_rule');
 
 		o = s.taboption('link', form.Value, 'cloudflare_api_key', _('API Key'));
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('mode', 'cloudflare_origin_rule');
+		o.depends('mode', 'cloudflare_redirect_rule');
 
 		o = s.taboption('link', form.Value, 'cloudflare_zone_id', _('Zone ID'));
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('mode', 'cloudflare_origin_rule');
+		o.depends('mode', 'cloudflare_redirect_rule');
 
 		o = s.taboption('link', form.Value, 'cloudflare_rule_name', _('Rule Name'));
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('mode', 'cloudflare_origin_rule');
+		o.depends('mode', 'cloudflare_redirect_rule');
+		
+		o = s.taboption('link', form.Value, 'cloudflare_rule_target_url', _('Target URL'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'cloudflare_redirect_rule');
 
 		o = s.taboption('link', form.Value, 'emby_url', _('URL'));
 		o.datatype = 'string';
