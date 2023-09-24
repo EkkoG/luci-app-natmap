@@ -1,8 +1,8 @@
 #!/bin/sh
 cp feeds.conf.default feeds.conf
 
-sed -e 's,https://git.openwrt.org,https://github.com,g' \
-    -i.bak feeds.conf
+# sed -e 's,https://git.openwrt.org,https://github.com,g' \
+#     -i.bak feeds.conf
 
 
 mkdir local-build-packages
