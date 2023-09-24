@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=LuCI Support for natmap
 LUCI_DEPENDS:=+natmap
-
+PKG_RELEASE:=2
 PKG_LICENSE:=Apache-2.0
 PKG_MAINTAINER:=Richard Yu <yurichard3839@gmail.com>
 

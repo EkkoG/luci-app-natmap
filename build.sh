@@ -1,6 +1,10 @@
 #!/bin/sh
 cp feeds.conf.default feeds.conf
 
+sed -e 's,https://git.openwrt.org,https://github.com,g' \
+    -i.bak feeds.conf
+
+
 mkdir local-build-packages
 cp -r local-build/* local-build-packages/
 sed -i '/luci.mk/ c\include $(TOPDIR)/feeds/luci/luci.mk' ./local-build-packages/luci-app-natmap/Makefile
