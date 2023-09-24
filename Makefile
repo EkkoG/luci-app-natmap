@@ -3,7 +3,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_VERSION:=1.0.0
-PKG_RELEASE:=1
+PKG_PO_VERSION:=$(PKG_VERSION)
 
 LUCI_TITLE:=LuCI Support for natmap
 LUCI_DEPENDS:=+natmap
