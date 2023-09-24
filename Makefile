@@ -2,7 +2,8 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_VERSION:=1.0.0
+# luci-app-natmap_git-23.208.32967-01d4ecb_all.ipk
+PKG_VERSION:=zzz-99.999.99999-1.0.0
 PKG_PO_VERSION:=$(PKG_VERSION)
 
 LUCI_TITLE:=LuCI Support for natmap
