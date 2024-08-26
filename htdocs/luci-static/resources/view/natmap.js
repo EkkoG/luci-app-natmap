@@ -275,6 +275,27 @@ return view.extend({
 		o.modalonly = true;
 		o.depends('tr_allow_ipv6', '1');
 
+		o = s.taboption('link', form.Value, 'proxy_port_content_url', _('Content URL'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'proxy_port');
+		
+		o = s.taboption('link', form.Value, 'proxy_port_gist_id', _('Gist ID'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'proxy_port');
+
+		o = s.taboption('link', form.Value, 'proxy_port_gist_filename', _('Gist Filename'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'proxy_port');
+
+		o = s.taboption('link', form.Value, 'proxy_port_github_token', _('GitHub Token'));
+		o.datatype = 'string';
+		o.modalonly = true;
+		o.depends('mode', 'proxy_port');
+
+
 		o = s.option(form.DummyValue, '_external_ip', _('External IP'));
 		o.modalonly = false;
 		o.textvalue = function(section_id) {
