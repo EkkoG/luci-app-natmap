@@ -174,6 +174,7 @@ return view.extend({
 		o.value('transmission', _('Transmission'));
 		o.value('cloudflare_origin_rule', _('Cloudflare Origin Rule'));
 		o.value('cloudflare_redirect_rule', _('Cloudflare Redirect Rule'));
+		o.value('proxy_port', _('Proxy port'));
 		o.depends('_link_to', '1');
 
 		o = s.taboption('link', form.Value, 'cloudflare_email', _('Email'));
@@ -278,6 +279,12 @@ return view.extend({
 		o = s.taboption('link', form.Value, 'proxy_port_content_url', _('Content URL'));
 		o.datatype = 'string';
 		o.modalonly = true;
+		o.depends('mode', 'proxy_port');
+
+		o = s.taboption('link', form.ListValue, 'proxy_port_config_type', _('Config Type'));
+		o.default = 'clash';
+		o.modalonly = true;
+		o.value('clash', _('Clash'));
 		o.depends('mode', 'proxy_port');
 		
 		o = s.taboption('link', form.Value, 'proxy_port_gist_id', _('Gist ID'));
