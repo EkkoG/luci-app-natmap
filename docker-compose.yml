@@ -1,6 +1,6 @@
 services:
   sdk:
-    image: openwrt/sdk:aarch64_cortex-a53
+    image: openwrt/sdk:x86-64
     volumes:
       - .:/builder/local-build/luci-app-natmap
       - ./bin:/builder/bin

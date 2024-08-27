@@ -280,12 +280,6 @@ return view.extend({
 		o.datatype = 'string';
 		o.modalonly = true;
 		o.depends('mode', 'proxy_port');
-
-		o = s.taboption('link', form.ListValue, 'proxy_port_config_type', _('Config Type'));
-		o.default = 'clash';
-		o.modalonly = true;
-		o.value('clash', _('Clash'));
-		o.depends('mode', 'proxy_port');
 		
 		o = s.taboption('link', form.Value, 'proxy_port_gist_id', _('Gist ID'));
 		o.datatype = 'string';
